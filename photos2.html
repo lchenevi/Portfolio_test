@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Photos</title>
+	<link rel="stylesheet" href="styles2.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+	<nav class="navbar">
+		<a href="index2.html" class="logo">COMPORTA ETHICS</a>
+		<div class="nav-links">
+			<ul>
+				<li class="active"><a href="about_us2.html">About us</a></li>
+				<li class="active"><a href="votre_recherche2.html">Your search</a></li>
+				<li class="active"><a href="notre_mission2.html">Our mission</a></li>
+				<li class="active"><a href="pourquoi_ethics2.html">Why Ethics?</a></li>
+				<li class="active"><a href="processus_achat2.html">Purchase process</a></li>
+				<li class="active"><a href="nos_partenaires2.html">Our partnerships</a></li>
+				<li class="active"><a href="photos2.html">Photos</a></li>
+			</ul>
+		</div>
+		<li class="nav-login"><a href="login2.html" target="_blank">Login/Register</a></li>
+		<img src="images/menu.png" alt="menu" class="menu">
+	</nav>
+
+	<header>
+		<div class="header-overlay">
+			<h1>COMPORTA ETHICS</h1>
+			<p>⸻⸻⸻⸻</p>
+			<p><i>Photos</i></p>
+		</div>
+	</header>
+
+	<script>
+		const menu = document.querySelector(".menu");
+		const navLinks = document.querySelector(".nav-links");
+
+		menu.addEventListener('click', () => {
+			navLinks.classList.toggle('mobile-menu');
+		});
+	</script>
+
+	<div class="image-section">
+		<div class="overlay">
+			<h5 class="image-section-text">YOUR PROJECT</h5>
+			<h2 class="image-section-title">YOUR DREAM HOUSE</h2>
+			<p class="image-section-text">Because every project is different, we support you in your search.</p>
+			<div class="clickable-box">
+				<a href="votre_recherche2.html">↳ Set your search criteria ↵</a>
+			</div>
+		</div>
+	</div>
+
+<footer>
+	<p>&copy; 2024 Comporta Ethics. All rights reserved.</p>
+	<div class="social-icons">
+		<a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+		<a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+		<a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+		<a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+	</div>
+</footer>
+
+</body>
+</html>
+

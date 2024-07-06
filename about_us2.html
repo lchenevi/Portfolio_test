@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>About us</title>
+	<link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+
+	<nav class="navbar">
+		<a href="index2.html" class="logo">COMPORTA ETHICS</a>
+		<div class="nav-links">
+			<ul>
+				<li class="active"><a href="about_us2.html">About us</a></li>
+				<li class="active"><a href="votre_recherche2.html">Your search</a></li>
+				<li class="active"><a href="notre_mission2.html">Our mission</a></li>
+				<li class="active"><a href="pourquoi_ethics2.html">Why Ethics?</a></li>
+				<li class="active"><a href="processus_achat2.html">Purchase process</a></li>
+				<li class="active"><a href="nos_partenaires2.html">Our partnerships</a></li>
+				<li class="active"><a href="photos2.html">Photos</a></li>
+			</ul>
+		</div>
+		<li class="nav-login"><a href="login2.html" target="_blank">Login/Register</a></li>
+		<img src="images/menu.png" alt="menu" class="menu">
+	</nav>
+
+	<header></header>
+
+</body>
+	<script>
+		const menu = document.querySelector(".menu")
+		const navLinks = document.querySelector(".nav-links")
+
+		menu.addEventListener('click',()=>{
+		navLinks.classList.toggle('mobile-menu')
+		})
+	</script>
+</html>
