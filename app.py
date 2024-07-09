@@ -28,63 +28,62 @@ login_manager.login_view = 'login'
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+	return User.query.get(int(user_id))
 
 with app.app_context():
-    db.create_all()
+	db.create_all()
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=form.username.data, email=form.email.data, password=hashed_password, is_admin=False)  # Set is_admin to False
-        try:
-            db.session.add(user)
-            db.session.commit()
-            flash('Your account has been created! You are now able to log in', 'success')
-            return redirect(url_for('login'))
-        except Exception as e:
-            db.session.rollback()
-            flash(f'Error: {str(e)}', 'danger')
-    return render_template('register2.html', form=form)
+	if current_user.is_authenticated:
+		return redirect(url_for('home'))
+	form = RegistrationForm()
+	if form.validate_on_submit():
+		hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+		user = User(username=form.username.data, email=form.email.data, password=hashed_password, is_admin=False)  # Set is_admin to False
+		try:
+			db.session.add(user)
+			db.session.commit()
+			flash('Your account has been created! You are now able to log in', 'success')
+			return redirect(url_for('login'))
+		except Exception as e:
+			db.session.rollback()
+			flash(f'Error: {str(e)}', 'danger')
+	return render_template('register2.html', form=form)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user and bcrypt.check_password_hash(user.password, form.password.data):
-            login_user(user, remember=form.remember.data)
-            next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('home'))
-        else:
-            flash('Login Unsuccessful. Please check username and password', 'danger')
-    return render_template('login2.html', form=form)
+	if current_user.is_authenticated:
+		return redirect(url_for('home'))
+	form = LoginForm()
+	if form.validate_on_submit():
+		user = User.query.filter_by(username=form.username.data).first()
+		if user and bcrypt.check_password_hash(user.password, form.password.data):
+			login_user(user, remember=form.remember.data)
+			next_page = request.args.get('next')
+			return redirect(next_page) if next_page else redirect(url_for('home'))
+		else:
+			flash('Login Unsuccessful. Please check username and password', 'danger')
+	return render_template('login2.html', form=form)
 
 @app.route("/logout")
 def logout():
-    logout_user()
-    return redirect(url_for('home'))
+	logout_user()
+	return redirect(url_for('home'))
 
 @app.route("/")
-@login_required
 def home():
-    return render_template('index2.html', username=current_user.username if current_user.is_authenticated else None)
+	return render_template('index2.html', username=current_user.username if current_user.is_authenticated else None)
 
 # Route to serve styles2.css
 @app.route('/styles2.css')
 def styles():
-    return send_from_directory(app.root_path, 'styles2.css')
+	return send_from_directory(app.root_path, 'styles2.css')
 
 # Route to serve images from the images folder
 @app.route('/images/<path:filename>')
 def images(filename):
-    return send_from_directory(os.path.join(app.root_path, 'images'), filename)
+	return send_from_directory(os.path.join(app.root_path, 'images'), filename)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+	app.run(debug=True)

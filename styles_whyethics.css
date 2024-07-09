@@ -163,6 +163,20 @@ header {
     color: #2f8fc6; /* Hover color for nav links */
 }
 
+.nav-login a{
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.nav-login a:hover{
+	color: red; /* Hover color for nav links */
+}
+
+.navbar .nav-login:hover{
+	transform: scale(1.05);
+}
+
 .navbar .nav-logout {
     display: flex;
     align-items: center;
